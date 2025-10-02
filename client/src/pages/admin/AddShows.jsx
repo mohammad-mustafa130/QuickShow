@@ -19,7 +19,11 @@ const AddShows = () => {
   }
   
   const handleDateTimeAdd = () => {
-    if(!dateTimeInput) return ;
+    if(!dateTimeInput){
+      document.getElementById("date-input").focus();
+      document.getElementById("date-input").click();
+      return;
+    };
     const [date, time] = dateTimeInput.split("T");
     if(!date || !time) return;
 
@@ -34,7 +38,7 @@ const AddShows = () => {
 
   const handleRemoveTime = (date, time) => {
       setDateTimeSelection((prev) =>{
-        const filteredTimes = prev[date].filter((t) !== time);
+        const filteredTimes = prev[date].filter(t => (t) !== time);
         if(filteredTimes.length === 0){
           const {[date]: _, ...rest} = prev;
           return rest;
@@ -93,7 +97,7 @@ const AddShows = () => {
       <div className='mt-6'>
         <label className='block text-sm font-medium mb-2'>Select Date and Time</label>
         <div className='inline-flex gap-5 border border-gray-600 p-1 pl-3 rounded-lg'>
-          <input type='datetime-local' value={dateTimeInput} onChange={(e) => setDateTimeInput(e.target.value)} className='outline-none rounded-md'/>
+          <input type='datetime-local' id="date-input" value={dateTimeInput} onChange={(e) => setDateTimeInput(e.target.value)} className='outline-none rounded-md'/>
           <button onClick={handleDateTimeAdd} className='bg-primary/80 text-white px-3 py-2 text-sm rounded-lg hover:bg-primary cursor-pointer'>Add Time</button>
         </div>
       </div>
