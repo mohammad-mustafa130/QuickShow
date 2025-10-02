@@ -21,9 +21,9 @@ body {
   scrollbar-width: none;
 }
 input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-butotn{
-  -webkit-appearence: none;
+input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
 }
-::-webkit-clalender-picker-indicator {
+::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
